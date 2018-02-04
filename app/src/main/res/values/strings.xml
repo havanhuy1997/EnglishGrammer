@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">EnglishGrammer</string>
+    <string name="title_activity_drawer">DrawerActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string-array name="topic_name">
+        <item>Past and Present</item>
+        <item>Present perfect and past 1</item>
+        <item>Present perfect and past 2</item>
+        <item>Future</item>
+        <item>Modals 1</item>
+        <item>Modals 2</item>
+        <item>If and wish + Passive</item>
+        <item>Reported speech + Questions and auxiliary verbs</item>
+        <item>-ing and to 1</item>
+        <item>-ing and to 2</item>
+        <item>Articles and nouns 1</item>
+        <item>Articles and nouns 2</item>
+        <item>Pronouns and determiners</item>
+        <item>Relative clauses</item>
+        <item>Adjectives and adverbs 1</item>
+        <item>Adjectives and adverbs 2</item>
+        <item>Conjuctions and prepositons</item>
+        <item>Prepositons 1</item>
+        <item>Prepositons 2</item>
+        <item>Phrasal verbs</item>
+        <item>Additional Exercises</item>
+    </string-array>
+    <string name="title_activity_learning">LearningActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="my_email">havanhuy1997@gmail.com</string>
+    <string name="nav_grammer">Grammer</string>
+    <string name="nav_favorite_unit">Favorite Unit</string>
+    <string name="nav_progress">Progress</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
