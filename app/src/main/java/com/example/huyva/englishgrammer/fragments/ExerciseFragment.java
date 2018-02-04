@@ -25,6 +25,7 @@ public class ExerciseFragment extends Fragment {
 
     private Context mContext;
     private String urlExercise;
+    private String unitName;
     private WebAppInterface webAppInterface;
 
     public Context getmContext() {
@@ -33,6 +34,14 @@ public class ExerciseFragment extends Fragment {
 
     public void setmContext(Context mContext) {
         this.mContext = mContext;
+    }
+
+    public String getUnitName() {
+        return unitName;
+    }
+
+    public void setUnitName(String unitName) {
+        this.unitName = unitName;
     }
 
     public String getUrlExercise() {
@@ -74,8 +83,8 @@ public class ExerciseFragment extends Fragment {
             Log.d(TAG,"urlExercise null");
         }
         if (mContext != null) {
-            webAppInterface = new WebAppInterface();
-            webAppInterface.setmContext(mContext);
+            webAppInterface = WebAppInterface.getInstance();
+            webAppInterface.setUnitName(unitName);
             wvExercise.addJavascriptInterface(webAppInterface,"Android");
             WebSettings webSettings = wvExercise.getSettings();
             webSettings.setJavaScriptEnabled(true);

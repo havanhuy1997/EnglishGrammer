@@ -62,6 +62,7 @@ public class LearningActivity extends AppCompatActivity {
         else{
             Log.d(TAG,"null urlExercise");
         }
+        exerciseFragment.setUnitName(unit.getNameUnit());
 
         PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager());
         pageAdapter.addFragment(grammerFragment, "Grammer");

@@ -2,6 +2,10 @@ function textToSpeech(s){
 	Android.showToast(s);
 }
 
+function updateScoreToDatabase(currentScoreString, maxScore){
+	Android.updateScoreIntoDatabase(currentScoreString, maxScore);
+}
+
 $(function(){		
 		$("input").focus(function(){
 			$(this).attr("class","normal");
@@ -16,26 +20,36 @@ $(function(){
 		});
 		
 		$(".submit").click(function(){
-			var score = 0;
-			inputs = document.getElementsByTagName("input");
-			for (a of inputs){
-				arr = a.value.toLowerCase().split(" ");
-				s = "";
-				for (b of arr){
-					if (b!=""){
-						s += b + " ";
+		
+			totalScore = 0;
+			scoreString = "";
+			countQuestion = 0;
+			
+			exercises = document.getElementsByClassName("exercise");
+			for (exercise of exercises){
+				scoreExercise = 0;
+				inputs = exercise.getElementsByTagName("input");
+				for (input of inputs){
+					countQuestion++;
+					arr = input.value.toLowerCase().split(" ");
+					s = "";
+					for (b of arr){
+						if (b!=""){
+							s += b + " ";
+						}
+					}
+					if (s.trim() == input.getAttribute("right_answer") || s.trim() == input.getAttribute("right_answer2")){
+						totalScore++;	
+						scoreExercise++;
+						input.setAttribute("class","right");
+					}
+					else{
+						input.setAttribute("class","wrong");
 					}
 				}
-				if (s.trim() == a.getAttribute("right_answer") || s.trim() == a.getAttribute("right_answer2")){
-					score++;			
-					a.setAttribute("class","right");
-				}
-				else{
-					a.setAttribute("class","wrong");
-				}
+				scoreString += scoreExercise + " ";
 			}
-			//a.length
-			alert(score);
+			updateScoreToDatabase(scoreString.trim(), countQuestion);
 		});
 		
 		$(".refresh").click(function(){

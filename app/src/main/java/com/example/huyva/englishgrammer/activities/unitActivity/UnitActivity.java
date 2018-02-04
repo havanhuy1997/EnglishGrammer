@@ -14,6 +14,7 @@ import com.example.huyva.englishgrammer.R;
 import com.example.huyva.englishgrammer.activities.learningActivity.LearningActivity;
 import com.example.huyva.englishgrammer.adapters.UnitAdapter;
 import com.example.huyva.englishgrammer.models.database.Database;
+import com.example.huyva.englishgrammer.models.database.DatabaseColume;
 import com.example.huyva.englishgrammer.objects.Topic;
 import com.example.huyva.englishgrammer.objects.Unit;
 
@@ -68,9 +69,9 @@ public class UnitActivity extends AppCompatActivity {
         sqLiteDatabase = Database.getInstance();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * from unit WHERE topic_name = '"+topic.getNameTopic()+"'",null);
         while (cursor.moveToNext()){
-           String unitName = cursor.getString(0);
-            String urlGrammer = cursor.getString(2);
-            String urlExercise = cursor.getString(3);
+           String unitName = cursor.getString(DatabaseColume.unitNameColumn);
+            String urlGrammer = cursor.getString(DatabaseColume.urlGrammerColumn);
+            String urlExercise = cursor.getString(DatabaseColume.urlExerciseColumn);
             unitList.add(new Unit(unitName,urlGrammer,urlExercise));
         }
         if (unitList.size() != 0){
