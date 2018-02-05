@@ -54,6 +54,7 @@ public class LearningActivity extends AppCompatActivity {
 
         //for exercise fragment
         exerciseFragment = new ExerciseFragment();
+        exerciseFragment.setLearningActivity(this);
         exerciseFragment.setmContext(getApplicationContext());
         urlExercise = unit.getUrlExercise();
         if (urlExercise != null) {
@@ -79,5 +80,6 @@ public class LearningActivity extends AppCompatActivity {
         Log.d(TAG,"onDestroy");
         grammerFragment.setmContext(null);
         exerciseFragment.setmContext(null);
+        exerciseFragment.setLearningActivity(null);
     }
 }
