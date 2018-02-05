@@ -1,6 +1,7 @@
 package com.example.huyva.englishgrammer.fragments;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,7 +27,16 @@ public class ExerciseFragment extends Fragment {
     private Context mContext;
     private String urlExercise;
     private String unitName;
+    private Activity learningActivity;
     private WebAppInterface webAppInterface;
+
+    public Activity getLearningActivity() {
+        return learningActivity;
+    }
+
+    public void setLearningActivity(Activity learningActivity) {
+        this.learningActivity = learningActivity;
+    }
 
     public Context getmContext() {
         return mContext;
@@ -84,6 +94,7 @@ public class ExerciseFragment extends Fragment {
         }
         if (mContext != null) {
             webAppInterface = WebAppInterface.getInstance();
+            webAppInterface.setLearningActivity(learningActivity);
             webAppInterface.setUnitName(unitName);
             wvExercise.addJavascriptInterface(webAppInterface,"Android");
             WebSettings webSettings = wvExercise.getSettings();
@@ -99,6 +110,7 @@ public class ExerciseFragment extends Fragment {
         super.onDestroy();
         Log.d(TAG, "onDestroy");
         webAppInterface.setmContext(null);
+        webAppInterface.setLearningActivity(null);
     }
 }
 

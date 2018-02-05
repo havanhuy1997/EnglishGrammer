@@ -1,11 +1,13 @@
 package com.example.huyva.englishgrammer.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
 import com.example.huyva.englishgrammer.activities.learningActivity.LearningPresenter;
+import com.example.huyva.englishgrammer.dialogs.ScoreDialog;
 import com.example.huyva.englishgrammer.objects.ScoreInfo;
 
 /**
@@ -19,6 +21,16 @@ public class WebAppInterface {
     private LearningPresenter learningPresenter;
     private static WebAppInterface instance;
     private String unitName;
+    private Activity learningActivity;
+    ScoreDialog scoreDialog;
+
+    public Activity getLearningActivity() {
+        return learningActivity;
+    }
+
+    public void setLearningActivity(Activity learningActivity) {
+        this.learningActivity = learningActivity;
+    }
 
     public String getUnitName() {
         return unitName;
@@ -69,6 +81,10 @@ public class WebAppInterface {
 
     @JavascriptInterface
     public void updateScoreIntoDatabase(String currentScoreString, int maxScore){
+        //Show Dialog
+        scoreDialog = new ScoreDialog();
+        scoreDialog.showDialog(learningActivity,"Score: "+calculateScore(currentScoreString) + "/" + maxScore);
+
         ScoreInfo scoreInfo = null;
         int score = 0;
         String previousScoreString;

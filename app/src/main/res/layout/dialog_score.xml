@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/topic"
+    android:gravity="top|center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtTitleScoreDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Result !"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="36sp" />
+
+    <TextView
+        android:id="@+id/txtScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="12/32"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnOK"
+            android:layout_width="44dp"
+            android:layout_height="21dp"
+            android:layout_weight="1"
+            android:background="@drawable/side_nav_bar"
+            android:text="OK"
+            android:textColor="@android:color/background_light" />
+    </LinearLayout>
+
+</LinearLayout>
