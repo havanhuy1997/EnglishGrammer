@@ -17,4 +17,5 @@ public class DatabaseColume {
     public static final String scoreColumnName = "score";
     public static final String previousScoreColumnName = "previous_score";
     public static final String maxScoreColumnName = "max_score";
+    public static final String favoriteColumn = "favorite_unit";
 }

@@ -3,7 +3,7 @@ function textToSpeech(s){
 }
 
 function updateScoreToDatabase(currentScoreString, maxScore){
-	Android.updateScoreIntoDatabase(currentScoreString, maxScore);
+	AndroidExercise.updateScoreIntoDatabase(currentScoreString, maxScore);
 }
 
 $(function(){		

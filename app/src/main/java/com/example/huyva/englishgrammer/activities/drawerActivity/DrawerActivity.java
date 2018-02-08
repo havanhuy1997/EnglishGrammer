@@ -49,11 +49,11 @@ public class DrawerActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_grammer) {
-            // Handle the camera action
+            drawerPresenter.updateDisplay(0);
         } else if (id == R.id.nav_favorite_unit) {
-
+            drawerPresenter.updateDisplay(1);
         } else if (id == R.id.nav_progress) {
-
+            drawerPresenter.updateDisplay(2);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

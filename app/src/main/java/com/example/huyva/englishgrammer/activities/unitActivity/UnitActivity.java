@@ -2,8 +2,6 @@ package com.example.huyva.englishgrammer.activities.unitActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,8 +11,6 @@ import android.util.Log;
 import com.example.huyva.englishgrammer.R;
 import com.example.huyva.englishgrammer.activities.learningActivity.LearningActivity;
 import com.example.huyva.englishgrammer.adapters.UnitAdapter;
-import com.example.huyva.englishgrammer.models.database.Database;
-import com.example.huyva.englishgrammer.models.database.DatabaseColume;
 import com.example.huyva.englishgrammer.objects.Topic;
 import com.example.huyva.englishgrammer.objects.Unit;
 
@@ -32,9 +28,8 @@ public class UnitActivity extends AppCompatActivity {
     Context context =this;
     List<Unit> unitList = new ArrayList<>();
     UnitAdapter unitAdapter;
-    Database database;
-    SQLiteDatabase sqLiteDatabase;
     UnitAdapter.OnItemClickListener listener;
+    UnitPresenter unitPresenter;
 
     @Override
     protected void onDestroy() {
@@ -49,6 +44,7 @@ public class UnitActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.d(TAG,"onStop");
+        unitPresenter.setmContext(null);
     }
 
 
@@ -60,20 +56,14 @@ public class UnitActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         Log.d(TAG,"onCreate");
 
-        Topic topic = (Topic) getIntent().getSerializableExtra("topic");
+        final Topic topic = (Topic) getIntent().getSerializableExtra("topic");
         if (topic != null){
             Log.d(TAG,topic.getNameTopic());
         }
-        database = new Database();
-        database.setmContext(getApplicationContext());
-        sqLiteDatabase = Database.getInstance();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * from unit WHERE topic_name = '"+topic.getNameTopic()+"'",null);
-        while (cursor.moveToNext()){
-           String unitName = cursor.getString(DatabaseColume.unitNameColumn);
-            String urlGrammer = cursor.getString(DatabaseColume.urlGrammerColumn);
-            String urlExercise = cursor.getString(DatabaseColume.urlExerciseColumn);
-            unitList.add(new Unit(unitName,urlGrammer,urlExercise));
-        }
+
+        unitPresenter = new UnitPresenter(this);
+        unitList = unitPresenter.getUnit(topic.getNameTopic());
+
         if (unitList.size() != 0){
             listener = new UnitAdapter.OnItemClickListener() {
                 @Override
@@ -82,6 +72,15 @@ public class UnitActivity extends AppCompatActivity {
                     Intent i = new Intent(context, LearningActivity.class);
                     i.putExtra("unit",unit);
                     startActivity(i);
+                }
+
+                @Override
+                public void onFavoriteClick(Unit unit) {
+                   unit.setFavorite(!unit.isFavorite());
+                   unitPresenter.updateFavorite(unit.getNameUnit(), unit.isFavorite());
+                   unitList.clear();
+                   unitList.addAll(unitPresenter.getUnit(topic.getNameTopic()));
+                   unitAdapter.notifyDataSetChanged();
                 }
             };
             unitAdapter = new UnitAdapter(unitList, listener);

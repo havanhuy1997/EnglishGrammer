@@ -13,7 +13,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.example.huyva.englishgrammer.R;
-import com.example.huyva.englishgrammer.utils.WebAppInterface;
+import com.example.huyva.englishgrammer.utils.WebAppInterfaceExercise;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,7 +28,7 @@ public class ExerciseFragment extends Fragment {
     private String urlExercise;
     private String unitName;
     private Activity learningActivity;
-    private WebAppInterface webAppInterface;
+    private WebAppInterfaceExercise webAppInterface;
 
     public Activity getLearningActivity() {
         return learningActivity;
@@ -93,10 +93,10 @@ public class ExerciseFragment extends Fragment {
             Log.d(TAG,"urlExercise null");
         }
         if (mContext != null) {
-            webAppInterface = WebAppInterface.getInstance();
-            webAppInterface.setLearningActivity(learningActivity);
+            webAppInterface = new WebAppInterfaceExercise(mContext);
+            webAppInterface .setLearningActivity(learningActivity);
             webAppInterface.setUnitName(unitName);
-            wvExercise.addJavascriptInterface(webAppInterface,"Android");
+            wvExercise.addJavascriptInterface(webAppInterface,"AndroidExercise");
             WebSettings webSettings = wvExercise.getSettings();
             webSettings.setJavaScriptEnabled(true);
         }

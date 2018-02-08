@@ -10,11 +10,13 @@ public class Unit implements Serializable{
     private String nameUnit;
     private String urlGrammer;
     private String urlExercise;
+    private boolean isFavorite;
 
-    public Unit(String nameUnit, String urlGrammer, String urlExercise){
+    public Unit(String nameUnit, String urlGrammer, String urlExercise, boolean isFavorite){
         this.nameUnit = nameUnit;
         this.urlGrammer = urlGrammer;
         this.urlExercise = urlExercise;
+        this.isFavorite = isFavorite;
     }
 
     public String getNameUnit() {
@@ -39,5 +41,13 @@ public class Unit implements Serializable{
 
     public void setUrlExercise(String urlExercise) {
         this.urlExercise = urlExercise;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 }

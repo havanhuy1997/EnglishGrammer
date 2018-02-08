@@ -1,11 +1,12 @@
 package com.example.huyva.englishgrammer.activities.drawerActivity;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.util.Log;
+import android.app.Fragment;
 
 import com.example.huyva.englishgrammer.R;
+import com.example.huyva.englishgrammer.fragments.FavoriteFragment;
 import com.example.huyva.englishgrammer.fragments.TopicFragment;
 import com.example.huyva.englishgrammer.models.database.Database;
 
@@ -24,20 +25,24 @@ public class DrawerPresenter {
 
 
     public void updateDisplay(int position) {
-        TopicFragment fragment = null;
+        Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment  = new TopicFragment();
-                fragment.setmContext(mContext);
-                changeFragment(fragment);
+                TopicFragment topicFragment  = new TopicFragment();
+                topicFragment.setmContext(mContext);
+                fragment = topicFragment;
                 break;
             case 1:
+                FavoriteFragment favoriteFragment  = new FavoriteFragment();
+                favoriteFragment.setContext(mContext);
+                fragment = favoriteFragment;
                 break;
             case 2:
                 break;
             default:
                 break;
         }
+        changeFragment(fragment);
     }
 
     private void changeFragment(Fragment fragment){

@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.huyva.englishgrammer.R;
@@ -56,6 +57,9 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.UnitHolder> {
     class UnitHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.txtUnit)
         TextView txtUnit;
+        @BindView(R.id.btnFavorite)
+        ImageButton btnFavorite;
+
         public UnitHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
@@ -64,16 +68,33 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.UnitHolder> {
         void bind(int position, final OnItemClickListener listener){
             final Unit unit = unitList.get(position);
             txtUnit.setText(unit.getNameUnit());
+
+            if (unit.isFavorite()){
+                btnFavorite.setImageResource(R.drawable.ic_favorite_press);
+            }
+            else{
+                btnFavorite.setImageResource(R.drawable.ic_favorite);
+            }
+
             txtUnit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     listener.onUnitClick(unit);
                 }
             });
+
+            btnFavorite.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onFavoriteClick(unit);
+                }
+            });
+
         }
     }
 
     public interface OnItemClickListener{
         void onUnitClick(Unit unit);
+        void onFavoriteClick(Unit unit);
     }
 }
