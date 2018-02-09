@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8px"
+    android:background="#015084"
+    android:orientation="vertical"
+    android:padding="5px">
+
+    <TextView
+        android:id="@+id/txtTopicProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Past and Present"
+        android:textSize="@dimen/topic_name_size"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            android:id="@+id/pbTopic"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="234dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:max="100"
+            android:min="0" />
+
+        <TextView
+            android:id="@+id/txtPercentTopic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="50%"
+            android:textColor="@android:color/background_light" />
+    </LinearLayout>
+</LinearLayout>

@@ -16,7 +16,7 @@
             android:gravity="left|center"
             android:text="Past and present"
             android:textColor="@android:color/background_light"
-            android:textSize="16sp"
+            android:textSize="@dimen/topic_name_size"
             android:paddingLeft="4dp"/>
 
         <Button

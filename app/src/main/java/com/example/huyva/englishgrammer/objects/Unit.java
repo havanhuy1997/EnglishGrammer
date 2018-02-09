@@ -11,12 +11,41 @@ public class Unit implements Serializable{
     private String urlGrammer;
     private String urlExercise;
     private boolean isFavorite;
+    private int score;
+    private int maxScore;
 
     public Unit(String nameUnit, String urlGrammer, String urlExercise, boolean isFavorite){
         this.nameUnit = nameUnit;
         this.urlGrammer = urlGrammer;
         this.urlExercise = urlExercise;
         this.isFavorite = isFavorite;
+        this.score = 0;
+        this.maxScore = 0;
+    }
+
+    public Unit(String nameUnit, String urlGrammer, String urlExercise, boolean isFavorite, int score, int maxScore) {
+        this.nameUnit = nameUnit;
+        this.urlGrammer = urlGrammer;
+        this.urlExercise = urlExercise;
+        this.isFavorite = isFavorite;
+        this.score = score;
+        this.maxScore = maxScore;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getMaxScore() {
+        return maxScore;
+    }
+
+    public void setMaxScore(int maxScore) {
+        this.maxScore = maxScore;
     }
 
     public String getNameUnit() {
