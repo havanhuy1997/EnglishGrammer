@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
@@ -20,18 +21,16 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <ProgressBar
+        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
             android:id="@+id/pbTopic"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="234dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:progressBackgroundTintMode="src_over"
-            android:progressTint="@color/colorAccent"
-            android:progressTintMode="src_over"
-            android:secondaryProgressTintMode="src_over"
-            android:max="100"
-            android:progress="50" />
+            android:layout_width="261dp"
+            android:layout_height="20dp"
+            app:rcBackgroundColor="@android:color/background_light"
+            app:rcBackgroundPadding="1dp"
+            app:rcMax="100"
+            app:rcProgress="20"
+            app:rcProgressColor="@android:color/holo_green_dark"
+            app:rcRadius="3dp" />
 
         <TextView
             android:id="@+id/txtPercentTopic"

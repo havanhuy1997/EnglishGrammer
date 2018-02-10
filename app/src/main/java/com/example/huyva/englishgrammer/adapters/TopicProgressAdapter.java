@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.huyva.englishgrammer.R;
@@ -67,7 +66,7 @@ public class TopicProgressAdapter extends RecyclerView.Adapter<TopicProgressAdap
         @BindView(R.id.txtPercentTopic)
         TextView txtPercentTopic;
         @BindView(R.id.pbTopic)
-        ProgressBar pbTopic;
+        com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar pbTopic;
 
         public TopicProgressHolder(View itemView) {
             super(itemView);

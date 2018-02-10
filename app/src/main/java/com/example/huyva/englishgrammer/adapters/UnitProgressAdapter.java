@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.huyva.englishgrammer.R;
@@ -55,7 +54,7 @@ public class UnitProgressAdapter extends RecyclerView.Adapter<UnitProgressAdapte
         @BindView(R.id.txtPercentUnit)
         TextView txtPercentUnit;
         @BindView(R.id.pbUnit)
-        ProgressBar pbUnit;
+        com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar pbUnit;
 
         public UnitProgressHolder(View itemView) {
             super(itemView);
