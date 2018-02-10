@@ -9,11 +9,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.huyva.englishgrammer.R;
-import com.example.huyva.englishgrammer.activities.unitActivity.UnitPresenter;
 import com.example.huyva.englishgrammer.objects.Topic;
-import com.example.huyva.englishgrammer.objects.Unit;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -26,9 +23,10 @@ import butterknife.ButterKnife;
 public class TopicProgressAdapter extends RecyclerView.Adapter<TopicProgressAdapter.TopicProgressHolder> {
     private final String TAG = "TopicProgressAdapter";
 
-    private UnitPresenter unitPresenter;
     private Context mContext;
     List<Topic> topicList;
+    List<Integer> scoreList;
+    List<Integer> maxScoreList;
     private TopicProgressAdapter.OnItemClickListener listener;
 
     public TopicProgressAdapter.OnItemClickListener getListener() {
@@ -39,11 +37,12 @@ public class TopicProgressAdapter extends RecyclerView.Adapter<TopicProgressAdap
         this.listener = listener;
     }
 
-    public TopicProgressAdapter(List<Topic> topicList, TopicProgressAdapter.OnItemClickListener listener, Context context){
+    public TopicProgressAdapter(List<Topic> topicList, List<Integer> scoreList, List<Integer> maxScoreList, TopicProgressAdapter.OnItemClickListener listener, Context context){
         this.mContext = context;
         this.topicList = topicList;
+        this.maxScoreList = maxScoreList;
+        this.scoreList = scoreList;
         this.listener = listener;
-        unitPresenter = new UnitPresenter(context);
     }
 
     @Override
@@ -77,23 +76,16 @@ public class TopicProgressAdapter extends RecyclerView.Adapter<TopicProgressAdap
 
         void bind(int position, final TopicProgressAdapter.OnItemClickListener listener){
             final Topic topic = topicList.get(position);
+            final int score = scoreList.get(position);
+            final int maxScore = maxScoreList.get(position);
             txtTopicProgress.setText(topic.getNameTopic());
-
-            List<Unit> unitList = new ArrayList<>();
-            unitList = unitPresenter.getUnit(topic.getNameTopic());
-            int maxScore = 0;
-            int score = 0;
             int percent = 0;
-            for (Unit u : unitList){
-                score += u.getScore();
-                maxScore += u.getMaxScore();
-            }
             if (maxScore != 0){
                 percent = (score / maxScore) * 100;
             }
 
-            txtPercentTopic.setText(50+"%");
-            pbTopic.setProgress(50);
+            txtPercentTopic.setText(percent+"%");
+            pbTopic.setProgress(percent);
 
             pbTopic.setOnClickListener(new View.OnClickListener() {
                 @Override
