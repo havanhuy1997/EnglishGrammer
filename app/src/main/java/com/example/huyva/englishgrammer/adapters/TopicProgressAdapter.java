@@ -81,16 +81,18 @@ public class TopicProgressAdapter extends RecyclerView.Adapter<TopicProgressAdap
             txtTopicProgress.setText(topic.getNameTopic());
             int percent = 0;
             if (maxScore != 0){
-                percent = (score / maxScore) * 100;
+                percent = score *100 / maxScore;
             }
 
             txtPercentTopic.setText(percent+"%");
             pbTopic.setProgress(percent);
 
-            pbTopic.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onTopicClick(topic);
+                    if (maxScore != 0) {
+                        listener.onTopicClick(topic);
+                    }
                 }
             });
         }

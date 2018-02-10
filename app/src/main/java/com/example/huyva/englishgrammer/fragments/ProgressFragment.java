@@ -2,6 +2,7 @@ package com.example.huyva.englishgrammer.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.huyva.englishgrammer.R;
 import com.example.huyva.englishgrammer.activities.unitActivity.UnitPresenter;
+import com.example.huyva.englishgrammer.activities.unitProgressActivity.ProgressUnitActivity;
 import com.example.huyva.englishgrammer.adapters.TopicProgressAdapter;
 import com.example.huyva.englishgrammer.objects.Topic;
 import com.example.huyva.englishgrammer.objects.Unit;
@@ -82,7 +84,9 @@ public class ProgressFragment extends Fragment {
         listener = new TopicProgressAdapter.OnItemClickListener() {
             @Override
             public void onTopicClick(Topic topic) {
-
+                Intent intent = new Intent(mContext, ProgressUnitActivity.class);
+                intent.putExtra("topic",topic);
+                mContext.startActivity(intent);
             }
         };
         topicProgressAdapter = new TopicProgressAdapter(topicList, scoreList, maxScoreList, listener, mContext);
