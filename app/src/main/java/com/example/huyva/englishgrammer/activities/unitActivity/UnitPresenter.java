@@ -53,7 +53,9 @@ public class UnitPresenter {
             String urlGrammer = cursor.getString(DatabaseColume.urlGrammerColumn);
             String urlExercise = cursor.getString(DatabaseColume.urlExerciseColumn);
             Boolean isFavorite = cursor.getInt(DatabaseColume.favoriteUnitColumn) > 0;
-            unitList.add(new Unit(unitName,urlGrammer,urlExercise, isFavorite));
+            int score = cursor.getInt(DatabaseColume.scoreColumn);
+            int maxScore = cursor.getInt(DatabaseColume.maxScoreColumn);
+            unitList.add(new Unit(unitName,urlGrammer,urlExercise, isFavorite,score, maxScore));
         }
         return unitList;
     }

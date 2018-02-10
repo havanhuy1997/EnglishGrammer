@@ -7,6 +7,7 @@ import android.app.Fragment;
 
 import com.example.huyva.englishgrammer.R;
 import com.example.huyva.englishgrammer.fragments.FavoriteFragment;
+import com.example.huyva.englishgrammer.fragments.ProgressFragment;
 import com.example.huyva.englishgrammer.fragments.TopicFragment;
 import com.example.huyva.englishgrammer.models.database.Database;
 
@@ -38,6 +39,9 @@ public class DrawerPresenter {
                 fragment = favoriteFragment;
                 break;
             case 2:
+                ProgressFragment progressFragment = new ProgressFragment();
+                progressFragment.setmContext(mContext);
+                fragment = progressFragment;
                 break;
             default:
                 break;
