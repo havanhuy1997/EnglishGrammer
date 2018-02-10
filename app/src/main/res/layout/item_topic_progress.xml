@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="6dp"
-    android:background="#015084"
     android:orientation="vertical"
+    android:layout_marginRight="@dimen/padding_item"
+    android:layout_marginLeft="@dimen/padding_item"
+    android:layout_marginTop="@dimen/padding_item"
+    android:background="@drawable/topic"
     android:padding="4dp">
 
     <TextView
@@ -25,7 +27,7 @@
             android:id="@+id/pbTopic"
             android:layout_width="261dp"
             android:layout_height="20dp"
-            app:rcBackgroundColor="@android:color/background_light"
+            app:rcBackgroundColor="@color/background_progress_bar"
             app:rcBackgroundPadding="1dp"
             app:rcMax="100"
             app:rcProgress="20"
