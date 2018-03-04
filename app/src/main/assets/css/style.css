@@ -73,3 +73,7 @@ input:focus{
 	bottom: 0px;
 	right: 0px;
 }
+
+.answers_hide {
+	display: none;
+}

@@ -24,7 +24,9 @@ $(function(){
 			totalScore = 0;
 			scoreString = "";
 			countQuestion = 0;
-			
+			//Show answer
+			answer = document.getElementById('answer')
+			answer.setAttribute('class','answers')
 			exercises = document.getElementsByClassName("exercise");
 			for (exercise of exercises){
 				scoreExercise = 0;
@@ -53,6 +55,8 @@ $(function(){
 		});
 		
 		$(".refresh").click(function(){
+			answer = document.getElementById('answer')
+			answer.setAttribute('class','answers_hide')
 			var score = 0;
 			inputs = document.getElementsByTagName("input");
 			for (a of inputs){
