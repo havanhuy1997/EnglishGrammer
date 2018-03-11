@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.huyva.englishgrammer.R;
 import com.example.huyva.englishgrammer.activities.learningActivity.LearningActivity;
@@ -32,6 +33,8 @@ public class FavoriteFragment extends Fragment {
 
     @BindView(R.id.rvFavoriteUnit)
     RecyclerView rvFavoriteUnit;
+    @BindView(R.id.txtEmptyFavorite)
+    TextView txtEmptyFavorite;
 
     private Context context;
     List<Unit> unitList = new ArrayList<>();
@@ -73,6 +76,8 @@ public class FavoriteFragment extends Fragment {
         unitPresenter = new UnitPresenter(context);
         unitList = unitPresenter.getFavoriteUnit();
         if (unitList.size() != 0) {
+            //hide txtEmptyFovorite
+            txtEmptyFavorite.setVisibility(View.INVISIBLE);
             listener = new UnitAdapter.OnItemClickListener() {
                 @Override
                 public void onUnitClick(Unit unit) {
@@ -95,6 +100,7 @@ public class FavoriteFragment extends Fragment {
             rvFavoriteUnit.setLayoutManager(new LinearLayoutManager(context));
             rvFavoriteUnit.setAdapter(unitAdapter);
         } else {
+            txtEmptyFavorite.setVisibility(View.VISIBLE);
             Log.d(TAG, "o");
         }
     }

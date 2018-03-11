@@ -75,7 +75,7 @@ public class UnitPresenter {
         }
 
 
-        int effectRow = sqLiteDatabase.update("unit", cv, DatabaseColume.unitColumnName + "='" + unitName+"'", null);
+        int effectRow = sqLiteDatabase.update("unit", cv, DatabaseColume.unitColumnName + "=\"" + unitName+"\"", null);
         if (!(effectRow > 0)){
             Log.d(TAG,"error Update");
         }

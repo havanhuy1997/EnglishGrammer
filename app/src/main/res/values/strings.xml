@@ -6,29 +6,23 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-
+    <string name="empty_favorite">Empty!</string>
     <string-array name="topic_name">
-        <item>Past and Present</item>
-        <item>Present perfect and past 1</item>
-        <item>Present perfect and past 2</item>
+        <item>Present and past</item>
+        <item>Present perfect and past</item>
         <item>Future</item>
-        <item>Modals 1</item>
-        <item>Modals 2</item>
-        <item>If and wish + Passive</item>
-        <item>Reported speech + Questions and auxiliary verbs</item>
-        <item>-ing and to 1</item>
-        <item>-ing and to 2</item>
-        <item>Articles and nouns 1</item>
-        <item>Articles and nouns 2</item>
+        <item>Modals</item>
+        <item>Conditionals and wish</item>
+        <item>Passive</item>
+        <item>Reported speech</item>
+        <item>Questions and auxiliary verbs</item>
+        <item>~ing and the infinitive</item>
+        <item>Articles and nouns</item>
         <item>Pronouns and determiners</item>
         <item>Relative clauses</item>
-        <item>Adjectives and adverbs 1</item>
-        <item>Adjectives and adverbs 2</item>
-        <item>Conjuctions and prepositons</item>
-        <item>Prepositons 1</item>
-        <item>Prepositons 2</item>
-        <item>Phrasal verbs</item>
-        <item>Additional Exercises</item>
+        <item>Adjectives and adverbs</item>
+        <item>Conjunctions and prepositions</item>
+        <item>Prepositions</item>
     </string-array>
     <string name="title_activity_learning">LearningActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
