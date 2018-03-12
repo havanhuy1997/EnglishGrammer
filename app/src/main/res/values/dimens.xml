@@ -9,4 +9,5 @@
     <dimen name="topic_name_size">16sp</dimen>
     <dimen name="conner_radius">6dp</dimen>
     <dimen name="padding_item">6dp</dimen>
+    <dimen name="font_size_setting">16sp</dimen>
 </resources>

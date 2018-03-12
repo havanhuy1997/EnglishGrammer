@@ -21,7 +21,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/empty_favorite" />
+            android:enabled="false"
+            android:shadowColor="@android:color/background_dark"
+            android:text="@string/empty_favorite"
+            android:textColor="@android:color/black"
+            android:visibility="visible" />
 
     </FrameLayout>
 

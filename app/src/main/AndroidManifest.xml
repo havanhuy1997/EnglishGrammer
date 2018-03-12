@@ -16,7 +16,6 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,6 +25,12 @@
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.unitProgressActivity.ProgressUnitActivity"></activity>
+        <receiver android:name=".other.NotificationReceiver">
+            <intent-filter>
+                <action android:name="android.media.action.DISPLAY_NOTIFICATION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

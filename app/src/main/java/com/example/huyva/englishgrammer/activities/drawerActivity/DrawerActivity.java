@@ -7,7 +7,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.huyva.englishgrammer.R;
@@ -34,26 +33,21 @@ public class DrawerActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.drawer, menu);
-        return true;
-    }
-
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_grammer) {
-            drawerPresenter.updateDisplay(0);
+            drawerPresenter.updateDisplay(NavParameter.grammer);
         } else if (id == R.id.nav_favorite_unit) {
-            drawerPresenter.updateDisplay(1);
+            drawerPresenter.updateDisplay(NavParameter.favoriteUnit);
         } else if (id == R.id.nav_progress) {
-            drawerPresenter.updateDisplay(2);
+            drawerPresenter.updateDisplay(NavParameter.progress);
+        } else if (id == R.id.nav_app_view) {
+            drawerPresenter.updateDisplay(NavParameter.appView);
+        } else if (id == R.id.nav_setting){
+            drawerPresenter.updateDisplay(NavParameter.setting);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -82,7 +76,7 @@ public class DrawerActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        drawerPresenter = new DrawerPresenter(this);
+        drawerPresenter = new DrawerPresenter(this, getSupportFragmentManager());
         drawerPresenter.updateDisplay(0);
         drawerPresenter.createDatabase();
     }

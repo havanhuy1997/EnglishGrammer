@@ -1,13 +1,16 @@
 package com.example.huyva.englishgrammer.activities.drawerActivity;
 
 import android.app.Activity;
-import android.app.FragmentManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
-import android.app.Fragment;
 
 import com.example.huyva.englishgrammer.R;
 import com.example.huyva.englishgrammer.fragments.FavoriteFragment;
 import com.example.huyva.englishgrammer.fragments.ProgressFragment;
+import com.example.huyva.englishgrammer.fragments.SettingFragment;
 import com.example.huyva.englishgrammer.fragments.TopicFragment;
 import com.example.huyva.englishgrammer.models.database.Database;
 
@@ -19,14 +22,17 @@ public class DrawerPresenter {
     private static final String TAG = "DrawerPresenter";
     private Activity mContext;
     Database database;
+    FragmentManager fragmentManager;
 
-    public DrawerPresenter(Activity activity){
+    public DrawerPresenter(Activity activity, FragmentManager fragmentManager){
         this.mContext = activity;
+        this.fragmentManager = fragmentManager;
     }
 
 
     public void updateDisplay(int position) {
         Fragment fragment = null;
+        int grammer = NavParameter.grammer;
         switch (position) {
             case 0:
                 TopicFragment topicFragment  = new TopicFragment();
@@ -43,7 +49,20 @@ public class DrawerPresenter {
                 progressFragment.setmContext(mContext);
                 fragment = progressFragment;
                 break;
-            default:
+            case 3:
+                //go to app in Ch play
+                final String appPackageName = mContext.getPackageName();
+                Log.d(TAG, appPackageName);
+                try {
+                    mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    mContext.startActivity(new Intent(Intent.ACTION_VIEW,
+                                            Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
+                break;
+            case 4:
+                SettingFragment settingFragment = new SettingFragment();
+                fragment = settingFragment;
                 break;
         }
         changeFragment(fragment);
@@ -51,7 +70,6 @@ public class DrawerPresenter {
 
     private void changeFragment(Fragment fragment){
         if (fragment != null) {
-            FragmentManager fragmentManager = mContext.getFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.transaction_container, fragment).commit();
 

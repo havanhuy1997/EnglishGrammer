@@ -30,6 +30,12 @@
     <string name="nav_grammer">Grammer</string>
     <string name="nav_favorite_unit">Favorite Unit</string>
     <string name="nav_progress">Progress</string>
+    <string name="nav_app_view">App Review</string>
+    <string name="nav_setting">Setting</string>
+
+    <string name="study_remainder_setting">Study remainder</string>
+    <string name="font_size_setting">Font size</string>
+    <string name="msg_learn_with_app">Let\'s study English.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
