@@ -7,14 +7,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.FrameLayout;
 
 import com.example.huyva.englishgrammer.R;
 import com.example.huyva.englishgrammer.activities.learningActivity.LearningActivity;
 import com.example.huyva.englishgrammer.adapters.UnitAdapter;
 import com.example.huyva.englishgrammer.objects.Topic;
 import com.example.huyva.englishgrammer.objects.Unit;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +30,9 @@ public class UnitActivity extends AppCompatActivity {
     private static String TAG = "UnitActivity";
     @BindView(R.id.rvUnit)
     RecyclerView rvUnit;
-    @BindView(R.id.adBannerUnit)
-    AdView adBannerUnit;
+    AdView adView;
+    @BindView(R.id.ad_layout_unit)
+    FrameLayout adLayout;
 
     Context context =this;
     List<Unit> unitList = new ArrayList<>();
@@ -101,7 +106,45 @@ public class UnitActivity extends AppCompatActivity {
     }
 
     void initAd(){
+        MobileAds.initialize(this,getString(R.string.app_id));
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId(getString(R.string.banner));
         AdRequest adRequest = new AdRequest.Builder().build();
-        adBannerUnit.loadAd(adRequest);
+        adView.loadAd(adRequest);
+        adView.setAdListener(new AdListener(){
+            @Override
+            public void onAdClosed() {
+                Log.d("AD", "closed");
+                super.onAdClosed();
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                adLayout.removeAllViews();
+                super.onAdFailedToLoad(i);
+                Log.d("AD", "failtoload");
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                Log.d("AD", "leftapp");
+                super.onAdLeftApplication();
+            }
+
+            @Override
+            public void onAdOpened() {
+                Log.d("AD", "opened");
+                super.onAdOpened();
+            }
+
+            @Override
+            public void onAdLoaded() {
+                adLayout.removeAllViews();
+                adLayout.addView(adView);
+                Log.d("AD", "loaded");
+                super.onAdLoaded();
+            }
+        });
     }
 }

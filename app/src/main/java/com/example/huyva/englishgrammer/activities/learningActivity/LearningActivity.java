@@ -1,18 +1,24 @@
 package com.example.huyva.englishgrammer.activities.learningActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.FrameLayout;
 
 import com.example.huyva.englishgrammer.R;
 import com.example.huyva.englishgrammer.adapters.PageAdapter;
 import com.example.huyva.englishgrammer.fragments.ExerciseFragment;
 import com.example.huyva.englishgrammer.fragments.GrammerFragment;
 import com.example.huyva.englishgrammer.objects.Unit;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,8 +29,10 @@ public class LearningActivity extends AppCompatActivity {
     ViewPager mVpPager;
     @BindView(R.id.tl_main_tab)
     TabLayout mTlMainTab;
-    @BindView(R.id.adBannerLearning)
-    AdView adBannerLearning;
+    AdView adView;
+    @BindView(R.id.ad_layout_learning)
+    FrameLayout adLayout;
+    InterstitialAd mInterstitialAd;
 
     private GrammerFragment grammerFragment;
     private ExerciseFragment exerciseFragment;
@@ -41,6 +49,7 @@ public class LearningActivity extends AppCompatActivity {
 
         init();
         initAd();
+        initAdInterstitial();
     }
 
     private void init(){
@@ -88,8 +97,78 @@ public class LearningActivity extends AppCompatActivity {
         exerciseFragment.setLearningActivity(null);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (mInterstitialAd.isLoaded()){
+            mInterstitialAd.show();
+        }
+        else{
+            super.onBackPressed();
+        }
+    }
+
     void initAd(){
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adBannerLearning.loadAd(adRequest);
+        MobileAds.initialize(this,getString(R.string.app_id));
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId(getString(R.string.banner));
+
+        final Handler handler = new Handler();
+        final Runnable run = new Runnable() {
+            @Override
+            public void run() {
+                AdRequest adRequest = new AdRequest.Builder().build();
+                adView.loadAd(adRequest);
+            }
+        };
+        handler.postDelayed(run, 500);
+
+        adView.setAdListener(new AdListener(){
+            @Override
+            public void onAdClosed() {
+                Log.d("AD", "closed");
+                super.onAdClosed();
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                adLayout.removeAllViews();
+                super.onAdFailedToLoad(i);
+                Log.d("AD", "failtoload");
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                Log.d("AD", "leftapp");
+                super.onAdLeftApplication();
+            }
+
+            @Override
+            public void onAdOpened() {
+                Log.d("AD", "opened");
+                super.onAdOpened();
+            }
+
+            @Override
+            public void onAdLoaded() {
+                adLayout.removeAllViews();
+                adLayout.addView(adView);
+                Log.d("AD", "loaded");
+                super.onAdLoaded();
+            }
+        });
+    }
+
+    void initAdInterstitial(){
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(getString(R.string.interstitial));
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        mInterstitialAd.setAdListener(new AdListener(){
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
+                LearningActivity.super.onBackPressed();
+            }
+        });
     }
 }
