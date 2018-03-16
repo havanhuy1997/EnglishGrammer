@@ -11,6 +11,8 @@ import com.example.huyva.englishgrammer.adapters.PageAdapter;
 import com.example.huyva.englishgrammer.fragments.ExerciseFragment;
 import com.example.huyva.englishgrammer.fragments.GrammerFragment;
 import com.example.huyva.englishgrammer.objects.Unit;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,6 +23,8 @@ public class LearningActivity extends AppCompatActivity {
     ViewPager mVpPager;
     @BindView(R.id.tl_main_tab)
     TabLayout mTlMainTab;
+    @BindView(R.id.adBannerLearning)
+    AdView adBannerLearning;
 
     private GrammerFragment grammerFragment;
     private ExerciseFragment exerciseFragment;
@@ -36,6 +40,7 @@ public class LearningActivity extends AppCompatActivity {
         Log.d(TAG,"onCreate");
 
         init();
+        initAd();
     }
 
     private void init(){
@@ -81,5 +86,10 @@ public class LearningActivity extends AppCompatActivity {
         grammerFragment.setmContext(null);
         exerciseFragment.setmContext(null);
         exerciseFragment.setLearningActivity(null);
+    }
+
+    void initAd(){
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adBannerLearning.loadAd(adRequest);
     }
 }

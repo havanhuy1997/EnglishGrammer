@@ -1,13 +1,14 @@
 body {
   text-align: left;
   background: #7BA6FD;
-  font-size: 13px;
+  font-size: 10dp;	
 }
 .section {
+  border-radius: 5px;
   padding-left:10px;
   color: yellow;
   background: blue;
-  font-size: 14px;
+  font-size: 11dp;
 }
 .box {
   border-radius: 10px;
@@ -32,13 +33,14 @@ body {
 }
 
 .exercise_name{
+	border-radius: 5px;
 	padding-left:10px;
 	color: yellow;
 	background: blue;
-	font-size: 16px;
+	font-size: 11dp;
 }
 .word_given{
-	font-size:16px;
+	font-size:11dp;
 }
 .part1{
 	margin: 6px;
@@ -63,14 +65,20 @@ input:focus{
 }
 
 .submit {
+	background-color: #015084;
+	color: white;
+	border-radius: 10px;
 	position: fixed;
-	bottom: 0px;
+	top: 0px;
 	left: 0px;
 }
 
 .refresh {
+	color: white;
+	background-color: #015084;
+	border-radius: 10px;
 	position: fixed;
-	bottom: 0px;
+	top: 0px;
 	right: 0px;
 }
 

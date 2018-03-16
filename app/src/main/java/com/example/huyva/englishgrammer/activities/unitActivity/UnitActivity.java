@@ -13,6 +13,8 @@ import com.example.huyva.englishgrammer.activities.learningActivity.LearningActi
 import com.example.huyva.englishgrammer.adapters.UnitAdapter;
 import com.example.huyva.englishgrammer.objects.Topic;
 import com.example.huyva.englishgrammer.objects.Unit;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,8 @@ public class UnitActivity extends AppCompatActivity {
     private static String TAG = "UnitActivity";
     @BindView(R.id.rvUnit)
     RecyclerView rvUnit;
+    @BindView(R.id.adBannerUnit)
+    AdView adBannerUnit;
 
     Context context =this;
     List<Unit> unitList = new ArrayList<>();
@@ -54,6 +58,7 @@ public class UnitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unit);
         ButterKnife.bind(this);
+        initAd();
         Log.d(TAG,"onCreate");
 
         final Topic topic = (Topic) getIntent().getSerializableExtra("topic");
@@ -93,5 +98,10 @@ public class UnitActivity extends AppCompatActivity {
 
         android.support.v7.app.ActionBar ab = getSupportActionBar();
         ab.setTitle(topic.getNameTopic());
+    }
+
+    void initAd(){
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adBannerUnit.loadAd(adRequest);
     }
 }
