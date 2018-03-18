@@ -79,6 +79,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        adView = null;
         drawerPresenter.database = null;
         drawerPresenter = null;
     }

@@ -103,6 +103,7 @@ public class LearningActivity extends AppCompatActivity {
             mInterstitialAd.show();
         }
         else{
+            mInterstitialAd = null;
             super.onBackPressed();
         }
     }
@@ -160,15 +161,8 @@ public class LearningActivity extends AppCompatActivity {
     }
 
     void initAdInterstitial(){
-        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd = new InterstitialAd(getApplicationContext());
         mInterstitialAd.setAdUnitId(getString(R.string.interstitial));
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
-        mInterstitialAd.setAdListener(new AdListener(){
-            @Override
-            public void onAdClosed() {
-                super.onAdClosed();
-                LearningActivity.super.onBackPressed();
-            }
-        });
     }
 }

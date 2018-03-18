@@ -44,4 +44,5 @@
     <string name="interstitial_debug">ca-app-pub-3940256099942544/1033173712</string>
     <string name="interstitial">ca-app-pub-2791958343678532/4469228591</string>
     <string name="app_id" >ca-app-pub-2791958343678532~4507320253</string>
+    <string name="start_app_id">202232989</string>
 </resources>

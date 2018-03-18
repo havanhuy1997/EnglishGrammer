@@ -44,6 +44,7 @@ public class UnitActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d(TAG,"onDestroy");
+        adView = null;
         listener = null;
         rvUnit = null;
         context = null;
