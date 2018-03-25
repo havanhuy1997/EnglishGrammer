@@ -92,7 +92,11 @@ public class FavoriteFragment extends Fragment {
                     unit.setFavorite(!unit.isFavorite());
                     unitPresenter.updateFavorite(unit.getNameUnit(), unit.isFavorite());
                     unitList.clear();
-                    unitList.addAll(unitPresenter.getFavoriteUnit());
+                    List<Unit> l = unitPresenter.getFavoriteUnit();
+                    if (l.size() == 0){
+                        txtEmptyFavorite.setVisibility(View.VISIBLE);
+                    }
+                    unitList.addAll(l);
                     unitAdapter.notifyDataSetChanged();
                 }
             };
