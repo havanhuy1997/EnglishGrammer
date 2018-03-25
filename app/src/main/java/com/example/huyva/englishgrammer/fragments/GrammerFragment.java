@@ -11,7 +11,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.example.huyva.englishgrammer.R;
-import com.example.huyva.englishgrammer.utils.WebAppInterface;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,7 +19,6 @@ public class GrammerFragment extends Fragment {
     static private String TAG = "GrammerFragment";
     @BindView(R.id.wvGrammer)
     WebView wvGrammer;
-    private WebAppInterface webAppInterface;
     private Context mContext;
     private String urlGrammer;
 
@@ -63,8 +61,6 @@ public class GrammerFragment extends Fragment {
             Log.d(TAG,"urlGrammer null");
         }
         if (mContext != null) {
-            webAppInterface = new WebAppInterface(mContext);
-            wvGrammer.addJavascriptInterface(webAppInterface,"Android");
             WebSettings webSettings = wvGrammer.getSettings();
             webSettings.setJavaScriptEnabled(true);
         }
@@ -85,8 +81,5 @@ public class GrammerFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         Log.d(TAG,"onDestroy");
-        webAppInterface.getTxtToSpeech().pauseSpeech();
-        webAppInterface.getTxtToSpeech().destroySpeech();
-        webAppInterface.setmContext(null);
     }
 }

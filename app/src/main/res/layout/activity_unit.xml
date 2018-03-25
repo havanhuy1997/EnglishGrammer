@@ -14,7 +14,8 @@
             android:id="@+id/rvUnit"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:background="@color/colorBackdroundSetting"/>
         <FrameLayout
             android:id="@+id/ad_layout_unit"
             android:layout_width="match_parent"

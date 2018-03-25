@@ -5,6 +5,8 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -20,6 +22,7 @@ import com.example.huyva.englishgrammer.models.database.SharedData;
 import com.example.huyva.englishgrammer.other.NotificationReceiver;
 
 import java.util.Calendar;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,6 +35,8 @@ import butterknife.OnClick;
 public class SettingFragment extends Fragment {
     private final String TAG = "SettingFragment";
     private final int REQUEST_CODE = 100;
+    long time;
+    boolean inShare = false;
 
     @BindView(R.id.switchStudyReminder)
     Switch switchStudyRemainder;
@@ -66,6 +71,17 @@ public class SettingFragment extends Fragment {
         super.onDestroy();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (inShare) {
+            long timeReturn = Calendar.getInstance().getTimeInMillis();
+            if ((timeReturn - time) / 1000 > 30) {
+                SharedData.getInstance(getContext()).saveVip();
+            }
+        }
+    }
+
     @OnClick(R.id.view_remind)
     void changeRemainder(){
         final boolean check = !switchStudyRemainder.isChecked();
@@ -91,6 +107,31 @@ public class SettingFragment extends Fragment {
             switchStudyRemainder.setChecked(false);
             disableReminder();
         }
+    }
+
+    @OnClick(R.id.share_app)
+    void shareApp(){
+        time = Calendar.getInstance().getTimeInMillis();
+        inShare = true;
+        String urlToShare = "https://play.google.com/store/apps/details?id="+getContext().getPackageName();
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, urlToShare);
+
+        boolean facebookAppFound = false;
+        List<ResolveInfo> matches = getContext().getPackageManager().queryIntentActivities(intent, 0);
+        for (ResolveInfo info : matches) {
+            if (info.activityInfo.packageName.toLowerCase().startsWith("com.facebook.katana")) {
+                intent.setPackage(info.activityInfo.packageName);
+                facebookAppFound = true;
+                break;
+            }
+        }
+        if (!facebookAppFound) {
+            String sharerUrl = "https://www.facebook.com/sharer/sharer.php?u=" + urlToShare;
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sharerUrl));
+        }
+        startActivity(intent);
     }
 
     private void disableReminder() {

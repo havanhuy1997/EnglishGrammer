@@ -90,7 +90,9 @@ public class TopicProgressAdapter extends RecyclerView.Adapter<TopicProgressAdap
                 @Override
                 public void onClick(View v) {
                     if (maxScore != 0) {
-                        listener.onTopicClick(topic);
+                        if ((score * 100 / maxScore) != 0) {
+                            listener.onTopicClick(topic);
+                        }
                     }
                 }
             });

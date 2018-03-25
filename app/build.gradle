@@ -36,4 +36,5 @@ dependencies {
     compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
     compile 'com.startapp:inapp-sdk:3.7.1'
     implementation 'com.google.android.gms:play-services-ads:11.8.0'
+
 }

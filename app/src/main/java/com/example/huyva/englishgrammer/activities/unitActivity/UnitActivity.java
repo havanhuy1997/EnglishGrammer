@@ -142,7 +142,9 @@ public class UnitActivity extends AppCompatActivity {
             @Override
             public void onAdLoaded() {
                 adLayout.removeAllViews();
-                adLayout.addView(adView);
+                if(adView != null) {
+                    adLayout.addView(adView);
+                }
                 Log.d("AD", "loaded");
                 super.onAdLoaded();
             }

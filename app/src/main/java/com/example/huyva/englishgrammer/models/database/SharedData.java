@@ -12,6 +12,7 @@ public class SharedData {
     private final String KEY_REMIND = "remind";
     private final String KEY_REMIND_HOUR = "remind_hour";
     private final String KEY_REMIND_MINUTE = "remind_minute";
+    private final String KEY_VIP = "vip";
 
     private static SharedData instance = null;
     private SharedPreferences sharedPreferences;
@@ -50,5 +51,15 @@ public class SharedData {
         sharedPreferences.edit()
                 .putBoolean(KEY_REMIND, remind)
                 .apply();
+    }
+
+    public void saveVip(){
+        sharedPreferences.edit()
+                .putBoolean(KEY_VIP, true)
+                .apply();
+    }
+
+    public boolean getVip(){
+        return sharedPreferences.getBoolean(KEY_VIP, false);
     }
 }

@@ -6,7 +6,7 @@
     android:layout_marginRight="@dimen/padding_item"
     android:layout_marginLeft="@dimen/padding_item"
     android:layout_marginTop="@dimen/padding_item"
-    android:background="@drawable/topic"
+    android:background="@drawable/press_state"
     android:orientation="vertical"
     android:padding="4dp">
 

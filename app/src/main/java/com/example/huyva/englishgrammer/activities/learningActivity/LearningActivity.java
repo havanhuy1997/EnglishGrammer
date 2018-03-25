@@ -12,6 +12,7 @@ import com.example.huyva.englishgrammer.R;
 import com.example.huyva.englishgrammer.adapters.PageAdapter;
 import com.example.huyva.englishgrammer.fragments.ExerciseFragment;
 import com.example.huyva.englishgrammer.fragments.GrammerFragment;
+import com.example.huyva.englishgrammer.models.database.SharedData;
 import com.example.huyva.englishgrammer.objects.Unit;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -49,7 +50,9 @@ public class LearningActivity extends AppCompatActivity {
 
         init();
         initAd();
-        initAdInterstitial();
+        if (!SharedData.getInstance(this).getVip()) {
+            initAdInterstitial();
+        }
     }
 
     private void init(){
@@ -99,8 +102,13 @@ public class LearningActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (mInterstitialAd.isLoaded()){
-            mInterstitialAd.show();
+        if (mInterstitialAd != null) {
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            }
+            else{
+                super.onBackPressed();
+            }
         }
         else{
             mInterstitialAd = null;
@@ -153,7 +161,9 @@ public class LearningActivity extends AppCompatActivity {
             @Override
             public void onAdLoaded() {
                 adLayout.removeAllViews();
-                adLayout.addView(adView);
+                if (adView != null) {
+                    adLayout.addView(adView);
+                }
                 Log.d("AD", "loaded");
                 super.onAdLoaded();
             }

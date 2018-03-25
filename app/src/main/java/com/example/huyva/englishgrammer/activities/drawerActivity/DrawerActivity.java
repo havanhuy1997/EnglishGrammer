@@ -140,7 +140,9 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
             @Override
             public void onAdLoaded() {
                 adLayoutDrawer.removeAllViews();
-                adLayoutDrawer.addView(adView);
+                if (adView!= null) {
+                    adLayoutDrawer.addView(adView);
+                }
                 Log.d("AD", "loaded");
                 super.onAdLoaded();
             }

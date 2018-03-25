@@ -1,7 +1,3 @@
-function textToSpeech(s){
-	Android.showToast(s);
-}
-
 function updateScoreToDatabase(currentScoreString, maxScore){
 	AndroidExercise.updateScoreIntoDatabase(currentScoreString, maxScore);
 }
