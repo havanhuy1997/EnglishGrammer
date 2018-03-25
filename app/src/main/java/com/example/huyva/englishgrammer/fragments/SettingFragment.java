@@ -113,7 +113,7 @@ public class SettingFragment extends Fragment {
     void shareApp(){
         time = Calendar.getInstance().getTimeInMillis();
         inShare = true;
-        String urlToShare = "https://play.google.com/store/apps/details?id="+getContext().getPackageName();
+        String urlToShare = "https://play.google.com/store/apps/details?id="+getContext().getPackageName()+"&hl=en";
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TEXT, urlToShare);
