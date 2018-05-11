@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.huyva.englishgrammer">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    package="com.huyha.van.englishgrammer">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity android:name="com.huyha.van.englishgrammer.MainActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"/>
         <activity
-            android:name=".activities.drawerActivity.DrawerActivity"
+            android:name="com.huyha.van.englishgrammer.activities.drawerActivity.DrawerActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="keyboardHidden|screenSize|orientation">
             <intent-filter>
@@ -22,14 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.unitActivity.UnitActivity"
+        <activity android:name="com.huyha.van.englishgrammer.activities.unitActivity.UnitActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"/>
         <activity
-            android:name=".activities.learningActivity.LearningActivity"
+            android:name="com.huyha.van.englishgrammer.activities.learningActivity.LearningActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.unitProgressActivity.ProgressUnitActivity"></activity>
-        <receiver android:name=".other.NotificationReceiver">
+        <activity android:name="com.huyha.van.englishgrammer.activities.unitProgressActivity.ProgressUnitActivity"/>
+        <receiver android:name="com.huyha.van.englishgrammer.other.NotificationReceiver">
             <intent-filter>
                 <action android:name="android.media.action.DISPLAY_NOTIFICATION" />
                 <category android:name="android.intent.category.DEFAULT" />

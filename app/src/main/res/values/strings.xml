@@ -27,7 +27,7 @@
     <string name="title_activity_learning">LearningActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="my_email">havanhuy1997@gmail.com</string>
-    <string name="nav_grammer">Grammer</string>
+    <string name="nav_grammer">Grammar</string>
     <string name="nav_favorite_unit">Favorite Unit</string>
     <string name="nav_progress">Progress</string>
     <string name="nav_app_view">App Review</string>

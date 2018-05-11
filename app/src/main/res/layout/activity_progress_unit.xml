@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.huyva.englishgrammer.activities.unitProgressActivity.ProgressUnitActivity"
+    tools:context="com.huyha.van.englishgrammer.activities.unitProgressActivity.ProgressUnitActivity"
     android:background="@android:color/darker_gray">
 
     <android.support.v7.widget.RecyclerView
