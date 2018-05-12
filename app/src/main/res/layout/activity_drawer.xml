@@ -34,13 +34,6 @@
                 android:orientation="vertical">
 
             </LinearLayout>
-
-            <FrameLayout
-                android:id="@+id/ad_layout_drawer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorBackdroundSetting">
-            </FrameLayout>
         </LinearLayout>
 
     </LinearLayout>

@@ -1,6 +1,8 @@
 package com.huyha.van.englishgrammer.fragments;
 
+import android.app.FragmentManager;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.huyha.van.englishgrammer.R;
 
@@ -54,6 +57,21 @@ public class GrammerFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        wvGrammer.setWebViewClient(new WebViewClient(){
+            ProgressDialogFragment progressDialogFragment = new ProgressDialogFragment("Loading");
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                FragmentManager fm = getActivity().getFragmentManager();
+                progressDialogFragment.show(fm,"sdf");
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                progressDialogFragment.dismissAllowingStateLoss();
+            }
+        });
         if (urlGrammer != null){
             wvGrammer.loadUrl(urlGrammer);
         }

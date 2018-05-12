@@ -3,7 +3,9 @@ package com.huyha.van.englishgrammer.fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.huyha.van.englishgrammer.R;
 import com.huyha.van.englishgrammer.utils.WebAppInterfaceExercise;
@@ -84,16 +87,25 @@ public class ExerciseFragment extends Fragment {
         return v;
     }
 
-    @SuppressLint({"SetJavaScriptEnabled", "AddJavascriptInterface"})
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     public void onStart() {
         super.onStart();
-        if (urlExercise != null){
-            wvExercise.loadUrl(urlExercise);
-        }
-        else{
-            Log.d(TAG,"urlExercise null");
-        }
+        wvExercise.setWebViewClient(new WebViewClient(){
+            ProgressDialogFragment progressDialogFragment = new ProgressDialogFragment("Loading");
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                FragmentManager fm = getActivity().getFragmentManager();
+                progressDialogFragment.show(fm,"sdf");
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                progressDialogFragment.dismissAllowingStateLoss();
+            }
+        });
         if (mContext != null) {
             webAppInterface = new WebAppInterfaceExercise(mContext);
             webAppInterface .setLearningActivity(learningActivity);
@@ -104,6 +116,13 @@ public class ExerciseFragment extends Fragment {
         }
         else{
             Log.d(TAG,"context null");
+        }
+        if (urlExercise != null){
+            Log.d(TAG, String.valueOf(wvExercise.getSettings().getJavaScriptEnabled()));
+            wvExercise.loadUrl(urlExercise);
+        }
+        else {
+            Log.d(TAG, "urlExercise null");
         }
     }
 

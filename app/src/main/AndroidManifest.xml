@@ -3,7 +3,7 @@
     package="com.huyha.van.englishgrammer">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
+    <uses-permission android:name="com.android.vending.BILLING"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="com.huyha.van.englishgrammer.MainActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation"/>
+            android:configChanges="keyboardHidden|screenSize|orientation">
+
+        </activity>
         <activity
             android:name="com.huyha.van.englishgrammer.activities.drawerActivity.DrawerActivity"
             android:theme="@style/AppTheme.NoActionBar"
@@ -21,6 +23,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name="com.huyha.van.englishgrammer.activities.unitActivity.UnitActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"/>

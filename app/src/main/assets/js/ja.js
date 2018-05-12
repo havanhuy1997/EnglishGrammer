@@ -24,14 +24,17 @@ $(function(){
 			answer = document.getElementById('answer')
 			answer.setAttribute('class','answers')
 			exercises = document.getElementsByClassName("exercise");
-			for (exercise of exercises){
+			for (var i=0; i< exercises.length; i++){
+				exercise = exercises[i];
 				scoreExercise = 0;
 				inputs = exercise.getElementsByTagName("input");
-				for (input of inputs){
+				for (var j=0; j< inputs.length; j++){
+					input = inputs[j];
 					countQuestion++;
 					arr = input.value.toLowerCase().split(" ");
 					s = "";
-					for (b of arr){
+					for (var k=0; k< arr.length; k++){
+						b = arr[k];
 						if (b!=""){
 							s += b + " ";
 						}
@@ -55,7 +58,8 @@ $(function(){
 			answer.setAttribute('class','answers_hide')
 			var score = 0;
 			inputs = document.getElementsByTagName("input");
-			for (a of inputs){
+			for (var i=0; i< inputs.length; i++){
+				a = inputs[i];
 				a.value = "";
 				a.setAttribute("size","5");
 			}

@@ -20,11 +20,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        webView.loadUrl("file:///android_asset/test.html");
+        webView.loadUrl("file:///android_asset/unit/unit1/exercise/exercise_1.html");
         webAppInterface = new WebAppInterface(this);
-        webView.addJavascriptInterface(webAppInterface,"Android");
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        webView.addJavascriptInterface(webAppInterface,"Android");
+
     }
 
     @Override

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">English Grammer</string>
+    <string name="app_name">English Grammar</string>
     <string name="title_activity_drawer">DrawerActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -42,8 +42,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="banner">ca-app-pub-2791958343678532/5810515836</string>
-    <string name="interstitial_debug">ca-app-pub-3940256099942544/1033173712</string>
     <string name="interstitial">ca-app-pub-2791958343678532/4469228591</string>
     <string name="app_id" >ca-app-pub-2791958343678532~4507320253</string>
-    <string name="start_app_id">202232989</string>
+
+    <!-- license key-->
+    <string name="license_key">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAj2DQqCVUeAwMBEJp5+zfFqci+DbnfvW0irkFcZ7vtGb5OXAfZJIKxEl569Sd2DBp8oos37ReBXI2LdtgADEuCZJhl80iRaM+fPCxTR6+Cs/JLmIERp6pzmrzdBjLBPuJG4fgUpiT+dLGFgqBP/gsVoyigDaEGXIp3y++il24vmvAU4Ajv2RXUgKBw3YWPXpTABE8Blkypz0LQh6i+5yGthJUD/W93RkWBfjchuE8Rgox//YYltonM8SjaCewTHtKx3wVzT3kcNUNqJavsloUOiszyYMwEGCr+Pyiwl0iF7oxkaM7srbdQlAOU1eqCTrvdtms8WkTw3CN4K4NFFnBNQIDAQAB</string>
 </resources>

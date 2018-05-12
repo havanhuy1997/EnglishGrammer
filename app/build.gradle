@@ -6,8 +6,8 @@ android {
         applicationId "com.huyha.van.englishgrammer"
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -34,7 +34,4 @@ dependencies {
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
-    compile 'com.startapp:inapp-sdk:3.7.1'
-    implementation 'com.google.android.gms:play-services-ads:11.8.0'
-
 }
